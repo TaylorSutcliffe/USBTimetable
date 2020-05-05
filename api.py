@@ -19,11 +19,12 @@ def apiGet(room, sensor, tfStart = None, tfEnd = None):
     data = None
     if room == "room-4.022" or "room-2.022": #add rooms here with multiple zones
         if sensor == "occupancy-sensor":
-            room = room.replace(".", "-")    
+            room = room.replace(".", "-")
             if tfStart and tfEnd:
-                returned = requests.get(f"https://api.usb.urbanobservatory.ac.uk/api/v2/sensors/timeseries/{room}-zone-3/{sensor}/raw/historic?startTime={tfStart}&endTime={tfEnd}").json()
+                returned = requests.get(f"https://api.usb.urbanobservatory.ac.uk/api/v2/sensors/timeseries/{room}-zone-1/{sensor}/raw/historic?startTime={tfStart}&endTime={tfEnd}").json()
+                data = returned["historic"]["values"]
             else:
-                returned = requests.get(f"https://api.usb.urbanobservatory.ac.uk/api/v2/sensors/timeseries/{room}-zone-3/{sensor}/raw/").json()
+                returned = requests.get(f"https://api.usb.urbanobservatory.ac.uk/api/v2/sensors/timeseries/{room}-zone-1/{sensor}/raw/").json()
                 data = returned["latest"]
         else:
             room = room.replace("room-", "")
