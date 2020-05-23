@@ -61,21 +61,21 @@ def timeTableGet(studentNo):
     g = open("calendar.ics", "r")
     gcal = Calendar.from_ical(g.read())
     dic = {}
-    l = []
+    timetableList = []
     for component in gcal.walk():
          if component.name == "VEVENT":
             dic["title"] = component.decoded('SUMMARY').decode("utf-8")
             dic["start"] = component.decoded('dtstart').strftime("%Y-%m-%dT%XZ")
             dic["end"] = component.decoded('dtend').strftime("%Y-%m-%dT%XZ")
             dic["location"] = component.decoded('Location').decode("utf-8")
-            l.append(dict(dic))
+            timetableList.append(dict(dic))
             #print(component.decoded('SUMMARY'))
             #print(component.decoded('dtstart'))
             #print(component.decoded('dtend'))
             #print(component.decoded('Location'))
     g.close()
 
-    return l
+    return timetableList
 
 
     
