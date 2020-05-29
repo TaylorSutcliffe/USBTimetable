@@ -45,8 +45,6 @@ def display(room1, room2, room3, sensor, subplots, studentNo):
     r1 = []
     r3 = []
     r2 = []
-    sense = ["occupancy-sensor", "co2", "room-temperature", "relative-humidity"]
-    display("room-4.022", "room-4.005", "room-2.022", sense[1], 12, 160508552)
     events = timeTableGet(studentNo)
     for e in events:
         try:
@@ -68,11 +66,13 @@ def display(room1, room2, room3, sensor, subplots, studentNo):
     vis(subplots, r3, room3.replace("room-", ""), sensor)
     vis(subplots, r2, room2.replace("room-", ""), sensor)
     vis(subplots, r1, room1.replace("room-", ""), sensor)
-    #vis(12, r4022oc, "2.022", "Occupancy")
     plt.show()
 
-# e1 = events[-1]
-# loc = e1["location"].replace("USB.", "room-")
+sense = ["occupancy-sensor", "co2", "room-temperature", "relative-humidity"]
+
+
+display("room-4.022", "room-4.005", "room-2.022", sense[1], 12, 160508552)
+
 
 
 

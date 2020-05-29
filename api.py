@@ -9,6 +9,7 @@ roomId = {}
 
 def apiGet(room, sensor, tfStart = None, tfEnd = None):
     """ A function that returns the values for either the latest value for a specified time frame exclusively
+        (Due to API issues this may not work with all sensor and room combinations)
         
         room: in the format of a USB room such as "room-8.025"
         
